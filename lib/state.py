@@ -1,32 +1,31 @@
 from enum import Enum
 # from lib.pieces import *
 
-class GameState:
+class State:
     # Fresh game state, initialised at the start of every new or loaded game
     def __init__(self):
-        self.current_player = Player.WHITE
+        self.current_player = 'WHITE'
         self.count = 0
 
     def name(self, name):
-        self.name = name
+        self.name = input('Please enter a name for this game. \n')
     
-    def toggle_player(self):
+    def switch_player(self):
         if self.current_player == Player.WHITE:
             self.current_player = Player.BLACK
         else:
             self.current_player = Player.WHITE
-
-    def make_move(self):
-        move = self.move
-        list = self.board.list
-        # Take the board array and a Move, changing self.lsit to match the state after move made
-        list[move.move_to] = list[move.move_from]
-        list[move.move_from] = 0
-        return list
-      
+    
     def advance(self):
         self.count += 1
-        self.toggle_player()
+        self.switch_player()
+    
+    def make_move(self):
+        # Take the board array and a Move, changing self.lsit to match the state after move made
+        self.lst[self.move.move_to] = self.lst[self.move.move_from]
+        list[move.move_from] = 0
+        return list
+
 
 class KnightMoves:
     # Initialise a dict of all possible knight moves

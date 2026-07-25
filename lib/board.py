@@ -27,7 +27,7 @@ class GameBoard:
         #             99, 99, 99, 99, 99, 99, 99, 99, 99, 99,
         #             99, 99, 99, 99, 99, 99, 99, 99, 99, 99]
 
-        self.list = [
+        self.lst = [
                     99, 99, 99, 99, 99, 99, 99, 99, 99, 99,
                     99, 99, 99, 99, 99, 99, 99, 99, 99, 99,
                     99, 0, 2, 3, 4, 5, 6, 0, 0, 99,
@@ -71,7 +71,7 @@ class GameBoard:
             p = 98
             for y in range(0,8):
                 for x in (7,6,5,4,3,2,1,0):
-                    arg[x] = self.list[z]
+                    arg[x] = self.lst[z]
                     z -= 1
                 print(arg)
                 z = p - 10
@@ -82,7 +82,7 @@ class GameBoard:
             p = 21
             for y in range(0,8):
                 for x in (7,6,5,4,3,2,1,0):
-                    arg[x] = self.list[z]
+                    arg[x] = self.lst[z]
                     z += 1
                 print(arg)
                 z = p + 10

@@ -1,18 +1,29 @@
-from lib import board, game_init, state, move, pieces
+from lib.game import Game
+import sys
 
 def main():
     # ----- Game loop for testing -----
-    state = game_init.new()
     while True:
-        print(state.current_player, 'to move')
-        state.board.print_board(state.current_player)
+        print('Start a new game or load a game? Enter "new" or "load" respectively')
+        y = input('Alternatively, enter "quit" to quite the program \n').lower()
+        if y == 'quit':
+            sys.exit()
+        else:
+            if y == 'new':
+                game = Game.new()
+            elif y == 'load':
+                False
+
+        print(game.current_player, 'to move')
+        game.board.print_board(game.current_player)
         x = input('Enter a square to select a piece to move. Give input in the format "a1", "e2", etc \n')
-        state.move.move_from = state.board.algebra_dict[x]
-        if state.move.is_piece():
+        game.move.move_from = game.board.algebra_dict[x]
+
+        if game.move.is_piece():
             print('Select a square with a piece')
             continue
-        piece = pieces.Piece(state)
-        if piece.player != state.current_player:
+        piece = Game.new_piece(game)
+        if piece.player != game.current_player:
             print('Select a piece of your own ya bellend')
             continue
         print(piece)

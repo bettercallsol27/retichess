@@ -1,11 +1,12 @@
+from enum import Enum
 
-# class ChessPieces(Enum):
-#     PAWN = 1
-#     KNIGHT = 2
-#     BISHOP = 3
-#     CASTLE = 4
-#     QUEEN = 5
-#     KING = 6
+class ChessPieces(Enum):
+    PAWN = 1
+    KNIGHT = 2
+    BISHOP = 3
+    CASTLE = 4
+    QUEEN = 5
+    KING = 6
 
 # class PieceNames(Enum):
 #     PAWN = ChessPieces.PAWN
@@ -15,49 +16,48 @@
 #     QUEEN = ChessPieces.QUEEN
 #     KING = ChessPieces.KING
 
-# class PieceMoves(Enum):
-#     PAWN = [10,20,9,11]
-#     KNIGHT = [8,12,19,21,-8,-12,-19,-21]
-#     BISHOP = [9,11,-9,-11]
-#     CASTLE = [10,1,-10,-1]
-#     QUEEN = [9,11,-9,-11,10,1,-10,-1]
-#     KING = [1,9,10,11,-1,-9,-10,-11]
+class PieceMoves(Enum):
+    PAWN = [10,20,9,11]
+    KNIGHT = [8,12,19,21,-8,-12,-19,-21]
+    BISHOP = [9,11,-9,-11]
+    CASTLE = [10,1,-10,-1]
+    QUEEN = [9,11,-9,-11,10,1,-10,-1]
+    KING = [1,9,10,11,-1,-9,-10,-11]
 
-# class Piece:
-#     def __init__(self,state):
-#         self.state = state
-#         self.list = state.board.list
-#         self.home = state.move.move_from
-#         self.name = ChessPieces(abs(self.list[self.home])).name
-#         self.value = ChessPieces(abs(self.list[self.home])).value
-#         self.moveset = PieceMoves[self.name].value
-#         self.moves_list = []
-#         if self.list[self.home] > 0:
-#             self.player = Player.WHITE
-#         else:
-#             self.player = Player.BLACK
+class Piece:
+    def __init__(self,game):
+        self.game = game
+        self.home = game.move.move_from
+        self.name = ChessPieces(abs(self.lst[self.home])).name
+        self.value = ChessPieces(abs(self.lst[self.home])).value
+        self.moveset = PieceMoves[self.name].value
+        self.moves_list = []
+        if self.lst[self.home] > 0:
+            self.player = 'WHITE'
+        else:
+            self.player = 'BLACK'
 
-#     def find_moves(self):
-#         state = self.state
-#         move = state.move
-#         if self.name == 'PAWN':
-#             self.pawn()
-#         elif self.name == 'KNIGHT':
-#             for i in state.knight_moves.dict[self.home]:
-#                 move.move_to = i
-#                 if move.is_legal():
-#                     self.moves_list.append(i)
-#         elif self.name == 'KING':
-#             for i in state.king_moves.dict[self.home]:
-#                 move.move_to = i
-#                 if move.is_legal():
-#                     self.moves_list.append(i)
-#         elif self.name == 'QUEEN':
-#             self.ray_moves()
-#         elif self.name == 'BISHOP':
-#             self.ray_moves()
-#         elif self.name == 'CASTLE':
-#             self.ray_moves()
+    def find_moves(self):
+        state = self.state
+        move = state.move
+        if self.name == 'PAWN':
+            self.pawn()
+        # elif self.name == 'KNIGHT':
+        #     for i in state.knight_moves.dict[self.home]:
+        #         move.move_to = i
+        #         if move.is_legal():
+        #             self.moves_list.append(i)
+        # elif self.name == 'KING':
+        #     for i in state.king_moves.dict[self.home]:
+        #         move.move_to = i
+        #         if move.is_legal():
+        #             self.moves_list.append(i)
+        # elif self.name == 'QUEEN':
+        #     self.ray_moves()
+        # elif self.name == 'BISHOP':
+        #     self.ray_moves()
+        # elif self.name == 'CASTLE':
+        #     self.ray_moves()
 
 #     def homerow(self):
 #         state = self.state
